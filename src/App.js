@@ -1,13 +1,10 @@
-// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
-import Article from './pages/Article';
+import ArticleDetails from './pages/ArticleDetails';  // This will show the detailed view of an article
 import About from './pages/About';
 import Contact from './pages/Contact';
 import CreateArticle from './pages/CreateArticle';
-import ArticleDetails from './pages/ArticleDetails'; // Import the new page
-
 
 function App() {
   return (
@@ -17,7 +14,7 @@ function App() {
         {/* Header */}
         <header className="bg-blue-600 text-white p-4">
           <div className="container mx-auto flex justify-between items-center">
-            <h1 className="text-2xl font-bold">News Web App</h1>
+            <h1 className="text-2xl font-bold">Chetana NEWS CA II</h1>
             <nav className="space-x-4">
               <Link to="/" className="hover:underline">Home</Link>
               <Link to="/about" className="hover:underline">About</Link>
@@ -29,20 +26,17 @@ function App() {
         
         {/* Main Content */}
         <div className="flex flex-1">
-  
-
           {/* Main Content Area */}
           <main className="flex-1 p-6 container mx-auto">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/article/:id" element={<Article />} />
+              {/* Route for viewing article details */}
+              <Route path="/articles/:id" element={<ArticleDetails />} /> {/* Dynamic route for viewing article details */}
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/create-article" element={<CreateArticle />} />
-              <Route path="/articles/:id" element={<ArticleDetails />} /> {/* Dynamic route */}
             </Routes>
           </main>
-          
         </div>
 
         {/* Footer */}

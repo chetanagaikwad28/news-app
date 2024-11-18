@@ -1,4 +1,3 @@
-// src/pages/Home.js
 import React, { useEffect, useState } from 'react';
 import { getArticles, deleteArticle } from '../api/axiosInstance'; // Importing axios functions
 import { Link } from 'react-router-dom'; // For navigation to the article detail page
@@ -62,6 +61,7 @@ function Home() {
                 <Link to={`/articles/${article._id}`} className="text-blue-500 hover:underline">
                   View Article
                 </Link>
+
 
                 {/* Delete Article button */}
                 <button

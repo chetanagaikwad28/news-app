@@ -9,6 +9,7 @@ function ArticleDetails() {
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
 
+  console.log(id);
   useEffect(() => {
     // Fetch article details and comments
     async function fetchData() {
