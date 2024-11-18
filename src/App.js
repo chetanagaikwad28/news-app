@@ -6,6 +6,8 @@ import Article from './pages/Article';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import CreateArticle from './pages/CreateArticle';
+import ArticleDetails from './pages/ArticleDetails'; // Import the new page
+
 
 function App() {
   return (
@@ -27,24 +29,7 @@ function App() {
         
         {/* Main Content */}
         <div className="flex flex-1">
-          
-          {/* Sidebar */}
-          <aside className="w-1/5 bg-gray-200 p-4 hidden lg:block">
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="block p-2 bg-blue-600 text-white rounded hover:bg-blue-700">Home</Link>
-              </li>
-              <li>
-                <Link to="/about" className="block p-2 bg-blue-600 text-white rounded hover:bg-blue-700">About</Link>
-              </li>
-              <li>
-                <Link to="/contact" className="block p-2 bg-blue-600 text-white rounded hover:bg-blue-700">Contact</Link>
-              </li>
-              <li>
-                <Link to="/create-article" className="block p-2 bg-blue-600 text-white rounded hover:bg-blue-700">New Article</Link>
-              </li>
-            </ul>
-          </aside>
+  
 
           {/* Main Content Area */}
           <main className="flex-1 p-6 container mx-auto">
@@ -54,6 +39,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/create-article" element={<CreateArticle />} />
+              <Route path="/articles/:id" element={<ArticleDetails />} /> {/* Dynamic route */}
             </Routes>
           </main>
           

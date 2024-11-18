@@ -1,5 +1,5 @@
-// src/pages/Contact.js
 import React, { useState } from 'react';
+import axiosInstance from '../api/axiosInstance'; // Adjust the import path
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -18,12 +18,22 @@ function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Normally, you'd send formData to a server here
-    console.log('Form submitted:', formData);
-    setStatus('Message sent successfully!');
-    setFormData({ name: '', email: '', message: '' });
+
+    try {
+      const response = await axiosInstance.post('/contact', formData);
+
+      if (response.data.success) {
+        setStatus('Message sent successfully!');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus('Failed to send message. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setStatus('Error occurred. Please try again.');
+    }
   };
 
   return (
@@ -79,7 +89,13 @@ function Contact() {
       </form>
 
       {status && (
-        <p className="text-green-600 mt-4 text-center">{status}</p>
+        <p
+          className={`mt-4 text-center ${
+            status.includes('successfully') ? 'text-green-600' : 'text-red-600'
+          }`}
+        >
+          {status}
+        </p>
       )}
     </div>
   );
